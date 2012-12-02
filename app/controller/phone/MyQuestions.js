@@ -7,6 +7,7 @@ Ext.define('VoteIt.controller.phone.MyQuestions', {
             myQuestionsView: {
                 backCommand: "onBack",
                 activateMyQuestionsCommand: "onActivateMyQuestions",
+                showMyQuestionsCommand: "onShowMyQuestions",
             	activateNewQuestionCommand: "onActivateNewQuestion",
                 activateQuestionCommand: "onActivateQuestion"
             },
@@ -14,24 +15,21 @@ Ext.define('VoteIt.controller.phone.MyQuestions', {
     },
 
     onBack: function() {
-        console.log('onBack');
         this.callParent();
         Ext.Viewport.animateActiveItem(this.getMainView(), VoteIt.app.slideRightTransition);
     },
 
     onActivateMyQuestions: function() {
-        console.log('onActivateMyQuestions');
         this.callParent();
         Ext.Viewport.animateActiveItem(this.getMyQuestionsView(), VoteIt.app.slideRightTransition);
     },
-
+    onShowMyQuestions: function() {
+        this.callParent([Ext.Viewport]);
+    },
     onActivateNewQuestion: function () {
-        console.log('onActivateNewQuestion');
         this.callParent([Ext.Viewport]);
     },
     onActivateQuestion: function (form, record) {
-        console.log('onActivateQuestion');
-        console.log(record);
         this.callParent([Ext.Viewport, record]);
     }
 });

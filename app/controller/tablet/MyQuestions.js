@@ -5,8 +5,9 @@ Ext.define('VoteIt.controller.tablet.MyQuestions', {
         control: {
             // The commands fired by main list container
             myQuestionsView: {
-                backCommand: "onBack",
+//                backCommand: "onBack",
                 activateMyQuestionsCommand: "onActivateMyQuestions",
+                showMyQuestionsCommand: "onShowMyQuestions",
                 activateNewQuestionCommand: "onActivateNewQuestion",
                 activateQuestionCommand: "onActivateQuestion"
             },
@@ -14,24 +15,21 @@ Ext.define('VoteIt.controller.tablet.MyQuestions', {
     },
 
     onBack: function() {
-        console.log('onBack');
         this.callParent();
         this.getDetailView().animateActiveItem(this.getMainView(), VoteIt.app.slideRightTransition);
     },
 
     onActivateMyQuestions: function() {
-        console.log('onActivateMyQuestions');
         this.callParent();
         this.getDetailView().animateActiveItem(this.getMyQuestionsView(), VoteIt.app.slideRightTransition);
     },
-
+    onShowMyQuestions: function() {
+        this.callParent([this.getDetailView()]);
+    },
     onActivateNewQuestion: function () {
-        console.log('onActivateNewQuestion');
         this.callParent([this.getDetailView()]);
     },
     onActivateQuestion: function (form, record) {
-        console.log('onActivateQuestion');
-        console.log(record);
         this.callParent([this.getDetailView(), record]);
     }
 });

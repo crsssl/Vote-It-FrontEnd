@@ -15,26 +15,20 @@ Ext.define('VoteIt.controller.phone.Questions', {
     },
 
     onBack: function() {
-        console.log('onBack');
         this.callParent();
         Ext.Viewport.animateActiveItem(this.getGroupView(), VoteIt.app.slideRightTransition);
     },
 
     onActivateQuestions: function(form, record) {
-        console.log('onActivateQuestions');
         this.callParent([Ext.Viewport, record]);
     },
     onShowQuestions: function() {
-        console.log('onShowQuestions');
         this.callParent([Ext.Viewport]);
     },
     onActivateNewQuestion: function (form, record) {
-        console.log('onActivateNewQuestion');
         this.callParent([Ext.Viewport, record]);
     },
     onActivateQuestion: function (form, record) {
-        console.log('onActivateQuestion');
-        console.log(record);
         this.callParent([Ext.Viewport, record]);
     }
 });

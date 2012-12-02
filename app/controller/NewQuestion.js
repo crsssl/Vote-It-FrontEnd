@@ -26,8 +26,6 @@ Ext.define("VoteIt.controller.NewQuestion", {
     // Commands
     
 	onInitialize: function (forGroupRecord) {
-        console.log('onInitialize');
-        console.log(forGroupRecord);
         var now = new Date();
         var questionId = (now.getTime()).toString() + (this.getRandomInt(0, 100)).toString();
         var newQuestion = Ext.create("VoteIt.model.Question", {
@@ -36,7 +34,7 @@ Ext.define("VoteIt.controller.NewQuestion", {
             created: now,
             question_text: "",
             conversation: "",
-            show_tally: true,
+            show_tally: false,
             answer1: "Yes",
             answer2: "No",
             answer3: "",
@@ -48,17 +46,13 @@ Ext.define("VoteIt.controller.NewQuestion", {
         this.getNewQuestionView().setRecord(newQuestion);
 	},
     onBack: function () {
-        console.log('onBack');
         this.getQuestionsView().fireEvent("showQuestionsCommand", this);
     },
     onOk: function (form) {
-        console.log('onOk');
 
         var record = form.getRecord();
         var vals = form.getValues();
         record.set(vals);
-
-        console.log(record);
 
         // Do some basic checking of data to keep input realistic
         var basicErrors = false;

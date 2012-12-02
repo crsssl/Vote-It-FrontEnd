@@ -5,7 +5,7 @@ Ext.define('VoteIt.controller.tablet.FindGroup', {
         control: {
         	// The commands fired by main list container
             findGroupView: {
-                backCommand: "onBack",
+//                backCommand: "onBack",
                 activateFindGroupCommand: "onActivateFindGroup",
                 activateGroupCommand: "onActivateGroup"
             }
@@ -13,19 +13,15 @@ Ext.define('VoteIt.controller.tablet.FindGroup', {
     },
 
     onBack: function() {
-        console.log('onBack');
         this.callParent();
         this.getDetailView().animateActiveItem(this.getMainView(), VoteIt.app.slideRightTransition);
     },
 
     onActivateFindGroup: function() {
-        console.log('onActivateFindGroup');
         this.callParent();
         this.getDetailView().animateActiveItem(this.getFindGroupView(), VoteIt.app.slideRightTransition);
     },
     onActivateGroup: function (form, record) {
-        console.log('onActivateGroup');
-        console.log(record);
         this.callParent([this.getDetailView(), record]);
     }
 });

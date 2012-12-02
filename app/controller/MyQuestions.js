@@ -18,26 +18,24 @@ Ext.define("VoteIt.controller.MyQuestions", {
     // Commands
 
     onBack: function() {
-        console.log('onBack');
         this.getMainView().fireEvent("activateMainViewCommand", this);
     },
 
     onActivateMyQuestions: function() {
-        console.log('onActivateMyQuestions');
         this.getMyQuestionsList().deselectAll();
     },
-
+    onShowMyQuestions: function(container) {
+        this.getMyQuestionsList().deselectAll();
+        container.animateActiveItem(this.getMyQuestionsView(), VoteIt.app.slideRightTransition);
+    },
     onActivateNewQuestion: function (container) {
-        console.log('onActivateNewQuestion');
         var ed = this.getNewQuestionView();
         ed.fireEvent("initializeCommand", this);
         container.animateActiveItem(ed, VoteIt.app.slideLeftTransition);
     },
     onActivateQuestion: function (container, record) {
-        console.log('onActivateQuestion')
-        console.log(record);
         var ed = this.getQuestionView();
-        ed.fireEvent("initializeCommand", record);
+        ed.fireEvent("initializeCommand", record, this.getMyQuestionsView(), "showMyQuestionsCommand");
         container.animateActiveItem(ed, VoteIt.app.slideLeftTransition);
     },
 

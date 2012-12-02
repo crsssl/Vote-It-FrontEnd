@@ -50,18 +50,24 @@ Ext.define("VoteIt.view.QuestionView", {
             }]
         },{
             xtype: "fieldset",
+            itemId: "fieldset1",
             items: [{
                 xtype: 'textfield',
                 label: 'Answer 1',
+                labelWrap: true,
+                labelWidth: '40%',
                 readOnly: true,
                 name : 'answer1',
                 itemId: 'answer1'
             }]
         },{
             xtype: "fieldset",
+            itemId: "fieldset2",
             items: [{
                 xtype: 'textfield',
                 label: 'Answer 2',
+                labelWrap: true,
+                labelWidth: '40%',
                 readOnly: true,
                 name : 'answer2',
                 itemId: 'answer2',
@@ -73,9 +79,41 @@ Ext.define("VoteIt.view.QuestionView", {
             items: [{
                 xtype: 'textfield',
                 label: 'Answer 3',
+                labelWidth: '40%',
+                labelWrap: true,
                 readOnly: true,
                 name : 'answer3',
                 itemId: 'answer3'
+            }]
+        },{
+            xtype: "fieldset",
+            itemId: "fieldsetTally1",
+            items: [{
+                xtype: 'textfield',
+                labelWidth: 0,
+                readOnly: true,
+                name : 'tallyText1',
+                itemId: 'tallyText1'
+            }]
+        },{
+            xtype: "fieldset",
+            itemId: "fieldsetTally2",
+            items: [{
+                xtype: 'textfield',
+                labelWidth: 0,
+                readOnly: true,
+                name : 'tallyText2',
+                itemId: 'tallyText2'
+            }]
+        },{
+            xtype: "fieldset",
+            itemId: "fieldsetTally3",
+            items: [{
+                xtype: 'textfield',
+                labelWidth: 0,
+                readOnly: true,
+                name : 'tallyText3',
+                itemId: 'tallyText3'
             }]
         },{
             xtype: 'panel',
@@ -91,8 +129,16 @@ Ext.define("VoteIt.view.QuestionView", {
                         ui: 'normal',
                         text: 'Vote',
                         itemId: 'voteButton',
-                        width: '120px',
+                        width: '180px',
                         left: 0
+                    },{
+                        xtype: 'button',
+                        ui: 'normal',
+                        text: 'You Have Voted',
+                        itemId: 'alreadyVotedButton',
+                        width: '180px',
+                        left: 0,
+                        disabled: true
                     }]
                 },{
                     xtype: 'panel',

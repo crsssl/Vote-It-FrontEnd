@@ -21,7 +21,7 @@ Ext.define("VoteIt.controller.NewGroup", {
                 backCommand: "onBack",
                 cancelCommand: "onCancel",
                 okCommand: "onOk",
-                ok2Command: "onOk2",
+//                ok2Command: "onOk2",
             }
         }
     },
@@ -29,7 +29,6 @@ Ext.define("VoteIt.controller.NewGroup", {
     // Commands
     
 	onInitialize: function () {
-        console.log('onInitialize');
         var now = new Date();
         var newGroupId = (now.getTime()).toString() + (this.getRandomInt(0, 100)).toString();
         var newGroup = Ext.create("VoteIt.model.Group", {
@@ -43,29 +42,22 @@ Ext.define("VoteIt.controller.NewGroup", {
         this.getNewGroupView().setRecord(newGroup);
 	},
     onBack: function () {
-        console.log('onBack');
         this.getMyGroupsView().fireEvent("activateMyGroupsCommand", this);
     },
     onCancel: function () {
-        console.log('onCancel');
         this.getMyGroupsView().fireEvent("activateMyGroupsCommand", this);
     },
     onOk: function (form) {
         this.process(form, true);
     },
-    onOk2: function (form) {
-        this.process(form, false);
-    },
+//    onOk2: function (form) {
+//        this.process(form, false);
+//    },
 
     process: function (form, join) {
-        console.log('onOk');
-        console.log(arguments); 
-
         var record = form.getRecord();
         var vals = form.getValues();
         record.set(vals);
-
-        console.log(record);
 
         // Do some basic checking of data to keep input realistic
         var basicErrors = false;
@@ -105,13 +97,11 @@ Ext.define("VoteIt.controller.NewGroup", {
         groupsStore.sort([{ property: 'created', direction: 'DESC'}]);
 
         if (join) {
-            console.log('joining');
             var groupsJoinedStore = Ext.getStore("GroupsJoined");
 
             var joinRecord = Ext.create("VoteIt.model.Group", {});
             var joinVals = record.getData();
             joinRecord.set(joinVals);
-            console.log(joinRecord);
             groupsJoinedStore.add(joinRecord);
             groupsJoinedStore.sync();
             groupsJoinedStore.sort([{ property: 'created', direction: 'DESC'}]);

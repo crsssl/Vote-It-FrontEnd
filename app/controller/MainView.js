@@ -18,12 +18,10 @@ Ext.define("VoteIt.controller.MainView", {
     // Commands
 
     onActivateMainView: function() {
-        console.log('onActivateMainView');
         this.getMainDash().deselectAll();
     },
 
     onActivateMyGroups: function (container) {
-        console.log('onActivateMyGroup');
         var ed = this.getMyGroupsView();
         ed.fireEvent("initializeCommand", this);
         container.animateActiveItem(ed, VoteIt.app.slideLeftTransition);

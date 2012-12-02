@@ -7,7 +7,7 @@ Ext.define('VoteIt.view.tablet.Main', {
         layout: 'hbox',
         items: [{
         	xtype: 'mainview',
-            width: 300
+            width: 200
         },{
        	    xtype: 'detailview',
             style: { 'border-left': "1px solid" },

@@ -9,8 +9,7 @@ Ext.application({
         "MyGroups", "NewGroup", "Group",
         "FindGroup",
         "Questions", "MyQuestions",
-        "NewQuestion", "Question",
-        "Vote"
+        "NewQuestion", "Question"
     ],
     models: [
         "Group", "GroupJoined",

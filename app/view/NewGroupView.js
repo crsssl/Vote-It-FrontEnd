@@ -80,6 +80,7 @@ Ext.define("VoteIt.view.NewGroupView", {
                 width: '150px',
                 left: 0,
                 flex: 1
+/*
             },{
                 xtype: 'button',
                 ui: 'normal',
@@ -88,6 +89,7 @@ Ext.define("VoteIt.view.NewGroupView", {
                 width: '150px',
                 right: 0,
                 flex: 1
+*/
             }]
         }],
         listeners: [{

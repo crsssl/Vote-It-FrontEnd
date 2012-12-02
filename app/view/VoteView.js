@@ -82,49 +82,67 @@ Ext.define("VoteIt.view.VoteView", {
             fn: "onVoteButtonTap"
         }],
     },
+
+    // Yep, it's not MVC, but it's nice to have this as a modal window
     onVoteButtonTap: function (btn) {
-        console.log(btn.getItemId());
-        // Yep, it's not MVC, but it's nice to have this modal window
+        function DoIt () {
+            // Update Question has been answered
+            if (btn.getItemId() == 'button1') {
+                var t1 = thisQuestionRecord.data.tally1 + 1;
+            } else if (btn.getItemId() == 'button2') {
+                var t2 = thisQuestionRecord.data.tally2 + 1;
+            } else if (btn.getItemId() == 'button3') {
+                var t3 = thisQuestionRecord.data.tally3 + 1;
+            }
 
-        console.log(this.getRecord());
+            // Note that Question has been answered
+            var questionsStore = Ext.getStore("Questions");
+            var questionsRecord = questionsStore.findRecord('question_id', thisQuestionRecord.data.question_id);
+            var questionsAnsweredStore = Ext.getStore("QuestionsAnswered");
+            var answeredRecord = Ext.create("VoteIt.model.QuestionAnswered", {});
+
+            questionsRecord.set(thisQuestionRecord.getData());
+            answeredRecord.set(thisQuestionRecord.getData());
+            if (btn.getItemId() == 'button1') {
+                questionsRecord.set('tally1', t1);
+                answeredRecord.set('tally1', t1);
+            } else if (btn.getItemId() == 'button2') {
+                questionsRecord.set('tally2', t2);
+                answeredRecord.set('tally2', t2);
+            } else if (btn.getItemId() == 'button3') {
+                questionsRecord.set('tally3', t3);
+                answeredRecord.set('tally3', t3);
+            }
+
+            questionsStore.sync();
+            questionsAnsweredStore.add(answeredRecord);
+            questionsAnsweredStore.sync();
+
+            questionsStore.sort([{ property: 'created', direction: 'DESC'}]);
+            questionsAnsweredStore.sort([{ property: 'created', direction: 'DESC'}]);
+        }
+
         var thisQuestionRecord = this.getRecord();
-
-
-        // Update Question has been answered
+        var msgtext = '';
         if (btn.getItemId() == 'button1') {
-            var t1 = thisQuestionRecord.data.tally1 + 1;
+            msgtext = thisQuestionRecord.data.answer1;
         } else if (btn.getItemId() == 'button2') {
-            var t2 = thisQuestionRecord.data.tally2 + 1;
+            msgtext = thisQuestionRecord.data.answer2;
         } else if (btn.getItemId() == 'button3') {
-            var t3 = thisQuestionRecord.data.tally3 + 1;
+            msgtext = thisQuestionRecord.data.answer3;
         }
-
-        // Note that Question has been answered
-        var questionsStore = Ext.getStore("Questions");
-        var questionsRecord = questionsStore.findRecord('question_id', thisQuestionRecord.data.question_id);
-        var questionsAnsweredStore = Ext.getStore("QuestionsAnswered");
-        var answeredRecord = Ext.create("VoteIt.model.QuestionAnswered", {});
-
-        questionsRecord.set(thisQuestionRecord.getData());
-        answeredRecord.set(thisQuestionRecord.getData());
-        if (btn.getItemId() == 'button1') {
-            questionsRecord.set('tally1', t1);
-            answeredRecord.set('tally1', t1);
-        } else if (btn.getItemId() == 'button2') {
-            questionsRecord.set('tally2', t2);
-            answeredRecord.set('tally2', t2);
-        } else if (btn.getItemId() == 'button3') {
-            questionsRecord.set('tally3', t3);
-            answeredRecord.set('tally3', t3);
-        }
-
-        questionsStore.sync();
-        questionsAnsweredStore.add(answeredRecord);
-        questionsAnsweredStore.sync();
-
-        questionsStore.sort([{ property: 'created', direction: 'DESC'}]);
-        questionsAnsweredStore.sort([{ property: 'created', direction: 'DESC'}]);
-
+        Ext.Msg.show({
+            title   : 'Confirm',
+            message : 'You Selected:<br>' + msgtext,
+            buttons : Ext.MessageBox.OKCANCEL,
+            fn      : function(text, btn) {
+                if (text == 'cancel') {
+                    return
+                } else {
+                    DoIt();
+                }
+            }
+        });
         this.hide(VoteIt.app.popOutTransition);
     },
 });

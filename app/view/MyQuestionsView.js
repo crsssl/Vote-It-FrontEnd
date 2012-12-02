@@ -61,16 +61,12 @@ Ext.define("VoteIt.view.MyQuestionsView", {
         }]
     },
     onBackButtonTap: function () {
-        console.log('onBackButtonTap');
         this.fireEvent("backCommand", this);
     },
     onAddButtonTap: function () {
-        console.log('onAddButtonTap');
         this.fireEvent("activateNewQuestionCommand", this);
     },
     onMyQuestionDisclose: function (list, index, target, record, evt, options) {
-        console.log('onMyQuestionsDisclose');
-        console.log(record);
         this.fireEvent("activateQuestionCommand", this, record);
     },
 });

@@ -18,25 +18,19 @@ Ext.define("VoteIt.controller.MyGroups", {
     // Commands
 
     onBack: function() {
-        console.log('onBack');
         this.getMainView().fireEvent("activateMainViewCommand", this);
     },
 
     onActivateMyGroups: function() {
-        console.log('onActivateMyGroups');
         this.getMyGroupsList().deselectAll();
     },
 
     onActivateNewGroup: function (container) {
-        console.log('onActivateNewGroup');
-        console.log(this.getMyGroupsView());
         var ed = this.getNewGroupView();
         ed.fireEvent("initializeCommand", this);
         container.animateActiveItem(ed, VoteIt.app.slideLeftTransition);
     },
     onActivateGroup: function (container, record) {
-        console.log('onActivateGroup')
-        console.log(record);
         var ed = this.getGroupView();
         ed.fireEvent("initializeCommand", record, this.getMyGroupsView(), "activateMyGroupsCommand");
         container.animateActiveItem(ed, VoteIt.app.slideLeftTransition);

@@ -66,16 +66,12 @@ Ext.define("VoteIt.view.MyGroupsView", {
         }]
     },
     onBackButtonTap: function () {
-        console.log('onBackButtonTap');
         this.fireEvent("backCommand", this);
     },
     onAddButtonTap: function () {
-        console.log('onAddButtonTap');
         this.fireEvent("activateNewGroupCommand", this);
     },
     onMyGroupsDisclose: function (list, index, target, record, evt, options) {
-        console.log('onMyGroupsDisclose');
-        console.log(record);
         this.fireEvent("activateGroupCommand", this, record);
     },
 });

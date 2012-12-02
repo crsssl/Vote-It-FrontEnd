@@ -33,9 +33,11 @@ Ext.define('VoteIt.view.DetailView', {
         },{
             itemId: "questionview",
             xtype: "questionview"
+/*
         },{
             itemId: "voteview",
             xtype: "voteview"
+*/
 /*
         },{
             itemId: "someEditor",

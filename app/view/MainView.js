@@ -24,12 +24,12 @@ Ext.define("VoteIt.view.MainView", {
             loadingText: "Loading Main...",
             emptyText: '<div class="list-empty-text">No items found.</div>',
             itemTpl: ['<div class="list-item-title">{title}</div>'],
-            fields: ['id', 'command', 'title', 'value', 'country' ],
+            fields: ['id', 'command', 'title' ],
             data: [
                 { id: "myGroups", command: "activateMyGroupsCommand", title: "My Groups" }, 
                 { id: "myQuestions", command: "activateMyQuestionsCommand", title: "My Questions" }, 
                 { id: "findGroups", command: "activateFindGroupsCommand", title: "Find Groups" }, 
-                { id: "news", command: "newsCommand", title: "News" } 
+//                { id: "news", command: "newsCommand", title: "News" } 
             ]
         }],
         listeners: [{

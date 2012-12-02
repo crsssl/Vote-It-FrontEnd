@@ -29,7 +29,7 @@ Ext.define("VoteIt.view.QuestionsView", {
 //                iconCls: "add",
 //                iconMask: true,
                 text: "Ask",
-                itemId: "addButton"
+                itemId: "askButton"
             }]
         },{
             xtype: "list",
@@ -48,9 +48,9 @@ Ext.define("VoteIt.view.QuestionsView", {
             event: "tap",
             fn: "onBackButtonTap"
         },{
-            delegate: "#addButton",
+            delegate: "#askButton",
             event: "tap",
-            fn: "onAddButtonTap"
+            fn: "onAskButtonTap"
         },{
             delegate: "#questionsList",
             event: "itemtap",
@@ -58,16 +58,12 @@ Ext.define("VoteIt.view.QuestionsView", {
         }]
     },
     onBackButtonTap: function () {
-        console.log('onBackButtonTap');
         this.fireEvent("backCommand", this);
     },
-    onAddButtonTap: function () {
-        console.log('onAddButtonTap');
+    onAskButtonTap: function () {
         this.fireEvent("activateNewQuestionCommand", this);
     },
     onQuestionDisclose: function (list, index, target, record, evt, options) {
-        console.log('onQuestionsDisclose');
-        console.log(record);
         this.fireEvent("activateQuestionCommand", this, record);
     },
 });

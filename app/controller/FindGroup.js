@@ -17,17 +17,13 @@ Ext.define("VoteIt.controller.FindGroup", {
     // Commands
 
     onBack: function() {
-        console.log('onBack');
         this.getMainView().fireEvent("activateMainViewCommand", this);
     },
 
     onActivateFindGroup: function() {
-        console.log('onActivateFindGroup');
         this.getFindGroupList().deselectAll();
     },
     onActivateGroup: function (container, record) {
-        console.log('onActivateGroup')
-        console.log(record);
         var ed = this.getGroupView();
         ed.fireEvent("initializeCommand", record, this.getFindGroupView(), "activateFindGroupCommand");
         container.animateActiveItem(ed, VoteIt.app.slideLeftTransition);

@@ -48,12 +48,9 @@ Ext.define("VoteIt.view.FindGroupView", {
         }]
     },
     onBackButtonTap: function () {
-        console.log('onBackButtonTap');
         this.fireEvent("backCommand", this);
     },
     onMyGroupsDisclose: function (list, index, target, record, evt, options) {
-        console.log('onMyGroupsDisclose');
-        console.log(record);
         this.fireEvent("activateGroupCommand", this, record);
     },
 });

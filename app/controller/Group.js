@@ -12,16 +12,10 @@ Ext.define("VoteIt.controller.Group", {
             groupView: "groupview",
             questionsView: "questionsview",
 
-//            dataPanel: '#dataPanel',
             joinedMessage: '#joinedMessage',
             joinButton: '#joinButton',
 
             title: "#title",
-/*
-            hashtag: "#hashtag",
-            description: "#description",
-            privacy: "#privacy",
-*/
         },
         control: {
         	// The commands fired by 
@@ -37,14 +31,12 @@ Ext.define("VoteIt.controller.Group", {
     // Commands
     
 	onInitialize: function (record, returnView, returnCommand) {
-        console.log('onInitialize');
 
         // This could come from anywhere. Just use the id to get the record
         var groupsStore = Ext.getStore("Groups");
         var groupRecord = groupsStore.findRecord('group_id', record.data.group_id);  // You can get a record with a given id.
 
         this.getGroupView().setRecord(groupRecord);
-//        this.getDataPanel().setRecord(groupRecord);
 
         var groupsJoinedStore = Ext.getStore("GroupsJoined");
         var joinedRecord = groupsJoinedStore.findRecord('group_id', record.data.group_id);  // You can get a record with a given id.
@@ -60,11 +52,9 @@ Ext.define("VoteIt.controller.Group", {
         this.getGroupView().returnCommand = returnCommand;
 	},
     onBack: function () {
-        console.log('onBack');
         this.getGroupView().returnView.fireEvent(this.getGroupView().returnCommand, this);
     },
     onJoin: function () {
-        console.log('onJoin');
 
         var actionSheet = Ext.create('Ext.ActionSheet', {
             items: [
@@ -103,7 +93,6 @@ Ext.define("VoteIt.controller.Group", {
         actionSheet.show();
     },
     onQuestions: function () {
-        console.log('onQuestions');
         var record = this.getGroupView().getRecord();
         this.getQuestionsView().fireEvent("activateQuestionsCommand", this, record);
     },

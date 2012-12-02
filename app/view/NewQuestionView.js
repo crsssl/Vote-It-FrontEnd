@@ -55,6 +55,7 @@ Ext.define("VoteIt.view.NewQuestionView", {
                 xtype: 'togglefield',
                 label: 'Show Tally?',
                 labelWrap: true,
+                labelWidth: '40%',
                 name : 'show_tally',
                 itemId: 'show_tally'
             }]
@@ -64,6 +65,7 @@ Ext.define("VoteIt.view.NewQuestionView", {
                 xtype: 'textfield',
                 label: 'Answer 1',
                 labelWrap: true,
+                labelWidth: '40%',
                 name : 'answer1',
                 itemId: 'answer1',
                 placeHolder: 'answer text'
@@ -74,6 +76,7 @@ Ext.define("VoteIt.view.NewQuestionView", {
                 xtype: 'textfield',
                 label: 'Answer 2',
                 labelWrap: true,
+                labelWidth: '40%',
                 name : 'answer2',
                 itemId: 'answer2',
                 placeHolder: 'answer text'
@@ -84,6 +87,7 @@ Ext.define("VoteIt.view.NewQuestionView", {
                 xtype: 'textfield',
                 label: 'Answer 3',
                 labelWrap: true,
+                labelWidth: '40%',
                 name : 'answer3',
                 itemId: 'answer3',
                 placeHolder: 'answer text'
